@@ -1,8 +1,8 @@
 import { globalAttrHandlers } from '@alumis/observables-dom';
 import { AlumisDropdown } from './AlumisDropdown';
-import { AlumisButtonAttributes } from './AlumisButtonAttributes';
+import { IAlumisButtonAttributes } from './IAlumisButtonAttributes';
 
-export function bindDropdown(node: HTMLDivElement, dropdown: AlumisDropdown, attrs: AlumisButtonAttributes) {
+export function bindDropdown(node: HTMLDivElement, dropdown: AlumisDropdown, attrs: IAlumisButtonAttributes) {
 
     let dropdownOnHover: boolean;
     let dropdownOnClickOutside: boolean;
