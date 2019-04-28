@@ -1,9 +1,9 @@
 import { AlumisDropdown } from "./AlumisDropdown";
-import { AlumisDropdownAttributes } from "./AlumisDropdownAttributes";
+import { IAlumisDropdownAttributes } from "./IAlumisDropdownAttributes";
 
 export abstract class AlumisUnorderedDropdown extends AlumisDropdown {
 
-    constructor(attrs: AlumisDropdownAttributes, children: any[]) {
+    constructor(attrs: IAlumisDropdownAttributes, children: any[]) {
 
         super('ul', attrs, children);
     }

@@ -1,5 +1,5 @@
 import { Component, createNode, appendDispose, IOnLoad } from '@alumis/observables-dom';
-import { AlumisDropdownAttributes } from './AlumisDropdownAttributes';
+import { IAlumisDropdownAttributes } from './IAlumisDropdownAttributes';
 import { Observable, o, co } from '@alumis/observables';
 import { IAlumisDropdownAnimator } from './IAlumisDropdownAnimator';
 import Popper, { Placement } from 'popper.js';
@@ -10,7 +10,7 @@ import { observe } from '@alumis/utils';
 
 export abstract class AlumisDropdown extends Component<HTMLListElement> implements IOnLoad {
 
-    constructor(tagName: string, attrs: AlumisDropdownAttributes, children: any[]) {
+    constructor(tagName: string, attrs: IAlumisDropdownAttributes, children: any[]) {
 
         super();
 

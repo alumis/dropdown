@@ -1,7 +1,7 @@
 
 export * from './src/IAlumisButtonAttributes';
 export * from './src/AlumisDropdown';
-export * from './src/AlumisDropdownAttributes';
+export * from './src/IAlumisDropdownAttributes';
 export * from './src/AlumisDropdownFadeAnimator';
 export * from './src/AlumisDropdownItem';
 export * from './src/AlumisOrderedDropdown';
