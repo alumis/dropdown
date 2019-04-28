@@ -1,8 +1,7 @@
-import {IAlumisButtonAttributes } from '@alumis/button';
 
 declare module '@alumis/button' {
 
-    export interface IAlumisButtonAttributes {
+    interface IAlumisButtonAttributes {
 
         dropdownOnHover: boolean;
         dropdownCloseOnClickOutside: boolean;    
