@@ -1,0 +1,39 @@
+{
+  "name": "@alumis/dropdown",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alumis/dropdown.git"
+  },
+  "author": "Andrew Nielsen Sadduq",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/alumis/dropdown/issues"
+  },
+  "homepage": "https://github.com/alumis/dropdown#readme",
+  "devDependencies": {
+    "@alumis/observables": "1.0.47",
+    "@alumis/observables-dom": "1.0.59",
+    "@alumis/semaphore": "1.0.1",
+    "@alumis/cancellationtoken": "1.0.4",
+    "@alumis/transitionasync": "1.0.3",
+    "@alumis/button": "1.0.2",
+    "@alumis/utils": "1.0.2",
+    "popper.js": "1.15.0"
+  },
+  "peerDependencies": {
+    "@alumis/observables": "1.0.47",
+    "@alumis/observables-dom": "1.0.59",
+    "@alumis/cancellationtoken": "1.0.4",
+    "@alumis/transitionasync": "1.0.3",
+    "@alumis/semaphore": "^1.0.1",
+    "@alumis/button": "1.0.2",
+    "@alumis/utils": "1.0.2",
+    "popper.js": "1.15.0"
+  }
+}
