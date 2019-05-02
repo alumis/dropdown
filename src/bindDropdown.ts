@@ -66,7 +66,9 @@ function clickedOutsideEventHandler(event: Event) {
     }
 }
 
-function mouseEnterEventHandler(event: Event, dropdown: AlumisDropdown<HTMLElement>) {
+function mouseEnterEventHandler(event: Event) {
+
+    let dropdown = <AlumisDropdown<HTMLElement>>this;
 
     dropdown.showAsObservable.value = true;
 
@@ -74,7 +76,9 @@ function mouseEnterEventHandler(event: Event, dropdown: AlumisDropdown<HTMLEleme
     toggleElement.setAttribute('aria-expanded', 'true');
 }
 
-function mouseLeaveEventHandler(event: Event, dropdown: AlumisDropdown<HTMLElement>) {
+function mouseLeaveEventHandler(event: Event) {
+
+    let dropdown = <AlumisDropdown<HTMLElement>>this;
 
     dropdown.showAsObservable.value = false;
 
@@ -82,7 +86,9 @@ function mouseLeaveEventHandler(event: Event, dropdown: AlumisDropdown<HTMLEleme
     toggleElement.setAttribute('aria-expanded', 'false');
 }
 
-function clickEventHandler(event: Event, dropdown: AlumisDropdown<HTMLElement>) {
+function clickEventHandler(event: Event) {
+
+    let dropdown = <AlumisDropdown<HTMLElement>>this;
 
     dropdown.showAsObservable.value = !dropdown.showAsObservable.value;
 
