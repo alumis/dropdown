@@ -1,11 +1,9 @@
 import { IAttributes } from "@alumis/observables-dom";
-import { Observable } from "@alumis/observables";
 import { IAlumisDropdownMenuAnimator } from "./IAlumisDropdownMenuAnimator";
-import { Placement } from "popper.js";
+import { DropdownMenuPlacement } from "./DropdownMenuPlacement";
 
 export interface IAlumisDropdownMenuAttributes extends IAttributes {
 
-    show: boolean | Observable<boolean> | (() => boolean);
-    placement?: Placement;
+    placement?: DropdownMenuPlacement;
     animator?: IAlumisDropdownMenuAnimator;
 }
