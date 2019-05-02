@@ -20,7 +20,7 @@ export function bindDropdown(node: HTMLElement, dropdown: AlumisDropdown, attrs:
     toggleElementsOfDropdown.set(dropdown, node);
 
     node.setAttribute('aria-haspopup', 'true');
-    node.setAttribute('aria-expanded', 'false');
+    node.setAttribute('aria-expanded', 'false');    
 
     if (node.id)
         dropdown.node.setAttribute('aria-labelledby', node.id);
@@ -46,6 +46,9 @@ export function bindDropdown(node: HTMLElement, dropdown: AlumisDropdown, attrs:
 
         dropdownsToCloseOnClickOutsideSet.add(dropdown);
     }
+
+    dropdown.referenceElement = node;
+    dropdown.initialize();
 }
 
 var toggleElementsOfDropdown = new Map<AlumisDropdown, HTMLElement>();
