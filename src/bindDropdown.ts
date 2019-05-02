@@ -88,6 +88,8 @@ function mouseLeaveEventHandler(event: Event) {
 
 function clickEventHandler(event: Event) {
 
+    debugger;
+
     let dropdown = <AlumisDropdown<HTMLElement>>this;
 
     dropdown.showAsObservable.value = !dropdown.showAsObservable.value;

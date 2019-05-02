@@ -104,6 +104,8 @@ export abstract class AlumisDropdown<TElement extends HTMLElement > extends Comp
 
     async showAction(show: boolean) {
 
+        debugger;
+
         if (!this.animate || !this.isLoaded)
             show ? this.referenceElement.appendChild(this.node) : this.node.remove();
 
