@@ -1,7 +1,7 @@
 import { globalAttrHandlers, generateHTMLElementId } from '@alumis/observables-dom';
 import { AlumisDropdownMenu } from './AlumisDropdownMenu';
 import { IAlumisButtonAttributes } from '@alumis/button';
-import { OperationCancelledError, CancellationToken, CancellationTokenNone } from '@alumis/cancellationtoken';
+import { OperationCancelledError, CancellationTokenNone } from '@alumis/cancellationtoken';
 import { delayAsync } from '@alumis/utils';
 
 export function bindDropdownMenu(toggleElement: HTMLElement, dropdownMenu: AlumisDropdownMenu, attrs: IAlumisButtonAttributes) {

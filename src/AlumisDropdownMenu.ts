@@ -12,6 +12,8 @@ export abstract class AlumisDropdownMenu extends Component<HTMLDivElement> {
     constructor(attrs: IAlumisDropdownMenuAttributes, children: any[], cssClasses: IAlumisDropdownMenuCssClasses) {
 
         super();
+
+        this.clickEventHandler = this.clickEventHandler.bind(this);
         
         let animator: IAlumisDropdownMenuAnimator;
         let placement: DropdownMenuPlacement;        
@@ -26,6 +28,7 @@ export abstract class AlumisDropdownMenu extends Component<HTMLDivElement> {
         }
 
         this.node = createNode('div', attrs, children);
+        this.node.addEventListener('click', this.clickEventHandler);
         this.node.classList.add(cssClasses["dropdown-menu"]);
 
         this.placement = placement || DropdownMenuPlacement.top;
@@ -117,6 +120,11 @@ export abstract class AlumisDropdownMenu extends Component<HTMLDivElement> {
 
             delete this._cancellationToken;
         }
+    }
+
+    private clickEventHandler(event: Event) {
+
+        event.stopPropagation();
     }
 }
 
