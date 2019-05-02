@@ -4,6 +4,8 @@ import { IAlumisDropdownMenuAnimator } from "./IAlumisDropdownMenuAnimator";
 
 export class AlumisDropdownEaseInFadeAnimator implements IAlumisDropdownMenuAnimator {
     
+    constructor(public duration: number = 150) {}
+
     async showAsync(node: HTMLElement, cancellationToken: CancellationToken): Promise<void> {
         
         let opacity = parseFloat(getComputedStyle(node).getPropertyValue('opacity'));
@@ -13,7 +15,7 @@ export class AlumisDropdownEaseInFadeAnimator implements IAlumisDropdownMenuAnim
 
         let remaining = 1 - opacity;
 
-        await transitionAsync(150, t => {
+        await transitionAsync(this.duration, t => {
 
             node.style.opacity = opacity + easeIn(t) * remaining + '';
 
@@ -29,7 +31,7 @@ export class AlumisDropdownEaseInFadeAnimator implements IAlumisDropdownMenuAnim
 
         let remaining = opacity;
 
-        await transitionAsync(150, t => {
+        await transitionAsync(this.duration, t => {
 
             node.style.opacity = opacity - easeIn(t) * remaining + '';
 
