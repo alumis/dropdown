@@ -7,8 +7,6 @@ import { CancellationToken, OperationCancelledError } from '@alumis/cancellation
 
 import { observe } from '@alumis/utils';
 
-type HTMLListElement = HTMLUListElement | HTMLOListElement;
-
 export abstract class AlumisDropdown<TElement extends HTMLElement > extends Component<TElement> {
 
     constructor(tagName: string, attrs: IAlumisDropdownAttributes, children: any[]) {
@@ -38,9 +36,9 @@ export abstract class AlumisDropdown<TElement extends HTMLElement > extends Comp
         this.node = createNode(tagName, attrs, children);
         this.node.remove();
 
-        this.placement = placement;
+        this.placement = placement || 'top';
         this.animator = animator;
-        this.animate = animate;
+        this.animate = animate || false;
         this._show = show;
     }
 
