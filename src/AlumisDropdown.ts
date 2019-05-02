@@ -106,9 +106,16 @@ export abstract class AlumisDropdown<TElement extends HTMLElement > extends Comp
 
         debugger;
 
-        if (!this.animate || !this.isLoaded)
-            show ? this.referenceElement.appendChild(this.node) : this.node.remove();
+        if (!this.animate || !this.isLoaded) {
 
+            if (show) {
+                this.referenceElement.appendChild(this.node);
+                this._popper.update();
+            } else {
+
+                this.node.remove();
+            }
+        }
         else {
 
             if (this._cancellationToken) 
