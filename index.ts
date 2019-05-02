@@ -1,4 +1,5 @@
 
+export * from './src/IAttributes';
 export * from './src/AlumisDropdown';
 export * from './src/IAlumisDropdownAttributes';
 export * from './src/AlumisDropdownFadeAnimator';

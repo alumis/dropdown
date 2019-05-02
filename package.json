@@ -28,7 +28,7 @@
   },
   "peerDependencies": {
     "@alumis/observables": "1.0.47",
-    "@alumis/observables-dom": "1.0.59",
+    "@alumis/observables-dom": "1.0.62",
     "@alumis/cancellationtoken": "1.0.4",
     "@alumis/transitionasync": "1.0.3",
     "@alumis/semaphore": "^1.0.1",
