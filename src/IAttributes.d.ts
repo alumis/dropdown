@@ -5,6 +5,6 @@ declare module '@alumis/observables-dom' {
 
     export interface IAttributes {
 
-        dropdown: AlumisDropdown;
+        dropdown?: AlumisDropdown;
     }
 }
