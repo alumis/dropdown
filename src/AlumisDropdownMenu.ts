@@ -1,5 +1,5 @@
 import { Component, createNode, appendDispose } from '@alumis/observables-dom';
-import { IAlumisDropdownAttributes } from './IAlumisDropdownMenuAttributes';
+import { IAlumisDropdownMenuAttributes } from './IAlumisDropdownMenuAttributes';
 import { Observable, o, co } from '@alumis/observables';
 import { IAlumisDropdownMenuAnimator } from './IAlumisDropdownMenuAnimator';
 import Popper, { Placement } from 'popper.js';
@@ -9,7 +9,7 @@ import { observe } from '@alumis/utils';
 
 export abstract class AlumisDropdownMenu extends Component<HTMLDivElement> {
 
-    constructor(tagName: string, attrs: IAlumisDropdownAttributes, children: any[]) {
+    constructor(tagName: string, attrs: IAlumisDropdownMenuAttributes, children: any[]) {
 
         super();
 

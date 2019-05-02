@@ -3,7 +3,7 @@ import { Observable } from "@alumis/observables";
 import { IAlumisDropdownMenuAnimator } from "./IAlumisDropdownMenuAnimator";
 import { Placement } from "popper.js";
 
-export interface IAlumisDropdownAttributes extends IAttributes {
+export interface IAlumisDropdownMenuAttributes extends IAttributes {
 
     show: boolean | Observable<boolean> | (() => boolean);
     placement?: Placement;

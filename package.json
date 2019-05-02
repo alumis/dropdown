@@ -27,13 +27,13 @@
     "popper.js": "1.15.0"
   },
   "peerDependencies": {
-    "@alumis/observables": "1.0.47",
-    "@alumis/observables-dom": "1.0.62",
-    "@alumis/cancellationtoken": "1.0.4",
-    "@alumis/transitionasync": "1.0.3",
+    "@alumis/observables": "^1.0.47",
+    "@alumis/observables-dom": "^1.0.62",
+    "@alumis/cancellationtoken": "^1.0.4",
+    "@alumis/transitionasync": "^1.0.3",
     "@alumis/semaphore": "^1.0.1",
-    "@alumis/button": "1.0.3",
-    "@alumis/utils": "1.0.2",
+    "@alumis/button": "^1.0.3",
+    "@alumis/utils": "^1.0.2",
     "popper.js": "1.15.0"
   }
 }
