@@ -3,18 +3,18 @@ import { AlumisDropdown } from './AlumisDropdown';
 import { IAlumisButtonAttributes } from '@alumis/button';
 import './IAlumisButtonAttributes';
 
-export function bindDropdown(node: HTMLDivElement, dropdown: AlumisDropdown, attrs: IAlumisButtonAttributes) {
+export function bindDropdown(node: HTMLElement, dropdown: AlumisDropdown, attrs: IAlumisButtonAttributes) {
 
     let dropdownOnHover: boolean;
     let dropdownOnClickOutside: boolean;
 
     if (attrs) {
         
-        dropdownOnHover = attrs.dropdownOnHover;
-        dropdownOnClickOutside = attrs.dropdownCloseOnClickOutside;
+        dropdownOnHover = attrs.dropdownonhover;
+        dropdownOnClickOutside = attrs.dropdowncloseonclickoutside;
 
-        delete attrs.dropdownOnHover;
-        delete attrs.dropdownCloseOnClickOutside;
+        delete attrs.dropdownonhover;
+        delete attrs.dropdowncloseonclickoutside;
     }
 
     toggleElementsOfDropdown.set(dropdown, node);
@@ -48,7 +48,7 @@ export function bindDropdown(node: HTMLDivElement, dropdown: AlumisDropdown, att
     }
 }
 
-var toggleElementsOfDropdown = new Map<AlumisDropdown, HTMLDivElement>();
+var toggleElementsOfDropdown = new Map<AlumisDropdown, HTMLElement>();
 
 var isClickedOutsideEventHandlerAttached = false;
 var dropdownsToCloseOnClickOutsideSet = new Set<AlumisDropdown>();
