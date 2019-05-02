@@ -9,7 +9,7 @@ import { observe } from '@alumis/utils';
 
 export abstract class AlumisDropdownMenu extends Component<HTMLDivElement> {
 
-    constructor(tagName: string, attrs: IAlumisDropdownMenuAttributes, children: any[]) {
+    constructor(attrs: IAlumisDropdownMenuAttributes, children: any[]) {
 
         super();
 
@@ -30,7 +30,7 @@ export abstract class AlumisDropdownMenu extends Component<HTMLDivElement> {
             delete attrs.placement;
         }
 
-        this.node = createNode(tagName, attrs, children);
+        this.node = createNode('div', attrs, children);
         this.node.classList.add('dropdown-menu');
 
         this.placement = placement || 'top';
