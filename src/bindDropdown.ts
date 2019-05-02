@@ -1,8 +1,8 @@
 import { globalAttrHandlers } from '@alumis/observables-dom';
-import { AlumisDropdown } from './AlumisDropdown';
+import { AlumisDropdownMenu } from './AlumisDropdownMenu';
 import { IAlumisButtonAttributes } from '@alumis/button';
 
-export function bindDropdown(node: HTMLElement, dropdown: AlumisDropdown<HTMLElement>, attrs: IAlumisButtonAttributes) {
+export function bindDropdownMenu(node: HTMLElement, dropdownMenu: AlumisDropdownMenu, attrs: IAlumisButtonAttributes) {
 
     let dropdownOnHover: boolean;
     let dropdownOnClickOutside: boolean;
@@ -16,22 +16,22 @@ export function bindDropdown(node: HTMLElement, dropdown: AlumisDropdown<HTMLEle
         delete attrs.dropdowncloseonclickoutside;
     }
 
-    toggleElementsOfDropdown.set(dropdown, node);
+    toggleElementsOfDropdown.set(dropdownMenu, node);
 
     node.setAttribute('aria-haspopup', 'true');
     node.setAttribute('aria-expanded', 'false');    
 
     if (node.id)
-        dropdown.node.setAttribute('aria-labelledby', node.id);
+        dropdownMenu.node.setAttribute('aria-labelledby', node.id);
     
     if (dropdownOnHover) {
 
-        node.addEventListener('mouseenter', mouseEnterEventHandler.bind(dropdown));
-        node.addEventListener('mouseleave', mouseLeaveEventHandler.bind(dropdown));
+        node.addEventListener('mouseenter', mouseEnterEventHandler.bind(dropdownMenu));
+        node.addEventListener('mouseleave', mouseLeaveEventHandler.bind(dropdownMenu));
 
     } else {
 
-        node.addEventListener('click', clickEventHandler.bind(dropdown));
+        node.addEventListener('click', clickEventHandler.bind(dropdownMenu));
     }
 
     if (dropdownOnClickOutside) {
@@ -43,17 +43,17 @@ export function bindDropdown(node: HTMLElement, dropdown: AlumisDropdown<HTMLEle
             isClickedOutsideEventHandlerAttached = true;
         }
 
-        dropdownsToCloseOnClickOutsideSet.add(dropdown);
+        dropdownsToCloseOnClickOutsideSet.add(dropdownMenu);
     }
 
-    dropdown.referenceElement = node;
-    dropdown.initialize();
+    dropdownMenu.referenceElement = node;
+    dropdownMenu.initialize();
 }
 
-var toggleElementsOfDropdown = new Map<AlumisDropdown<HTMLElement>, HTMLElement>();
+var toggleElementsOfDropdown = new Map<AlumisDropdownMenu, HTMLElement>();
 
 var isClickedOutsideEventHandlerAttached = false;
-var dropdownsToCloseOnClickOutsideSet = new Set<AlumisDropdown<HTMLElement>>();
+var dropdownsToCloseOnClickOutsideSet = new Set<AlumisDropdownMenu>();
 
 function clickedOutsideEventHandler(event: Event) {
 
@@ -68,7 +68,7 @@ function clickedOutsideEventHandler(event: Event) {
 
 function mouseEnterEventHandler(event: Event) {
 
-    let dropdown = <AlumisDropdown<HTMLElement>>this;
+    let dropdown = <AlumisDropdownMenu>this;
 
     dropdown.showAsObservable.value = true;
 
@@ -78,7 +78,7 @@ function mouseEnterEventHandler(event: Event) {
 
 function mouseLeaveEventHandler(event: Event) {
 
-    let dropdown = <AlumisDropdown<HTMLElement>>this;
+    let dropdown = <AlumisDropdownMenu>this;
 
     dropdown.showAsObservable.value = false;
 
@@ -88,9 +88,7 @@ function mouseLeaveEventHandler(event: Event) {
 
 function clickEventHandler(event: Event) {
 
-    debugger;
-
-    let dropdown = <AlumisDropdown<HTMLElement>>this;
+    let dropdown = <AlumisDropdownMenu>this;
 
     dropdown.showAsObservable.value = !dropdown.showAsObservable.value;
 
@@ -98,4 +96,4 @@ function clickEventHandler(event: Event) {
     toggleElement.setAttribute('aria-expanded',  dropdown.showAsObservable.value + '');
 }
 
-globalAttrHandlers.set('dropdown', bindDropdown);
+globalAttrHandlers.set('dropdownmenu', bindDropdownMenu);

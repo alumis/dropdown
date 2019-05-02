@@ -1,8 +1,8 @@
 import { CancellationToken } from '@alumis/cancellationtoken';
 import { transitionAsync, easeIn } from '@alumis/transitionasync';
-import { IAlumisDropdownAnimator } from "./IAlumisDropdownAnimator";
+import { IAlumisDropdownMenuAnimator } from "./IAlumisDropdownMenuAnimator";
 
-export class AlumisDropdownEaseInFadeAnimator implements IAlumisDropdownAnimator {
+export class AlumisDropdownEaseInFadeAnimator implements IAlumisDropdownMenuAnimator {
     
     async showAsync(node: HTMLElement, cancellationToken: CancellationToken): Promise<void> {
         

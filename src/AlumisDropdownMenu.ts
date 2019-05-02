@@ -1,23 +1,22 @@
 import { Component, createNode, appendDispose } from '@alumis/observables-dom';
-import { IAlumisDropdownAttributes } from './IAlumisDropdownAttributes';
+import { IAlumisDropdownAttributes } from './IAlumisDropdownMenuAttributes';
 import { Observable, o, co } from '@alumis/observables';
-import { IAlumisDropdownAnimator } from './IAlumisDropdownAnimator';
+import { IAlumisDropdownMenuAnimator } from './IAlumisDropdownMenuAnimator';
 import Popper, { Placement } from 'popper.js';
 import { CancellationToken, OperationCancelledError } from '@alumis/cancellationtoken';
 
 import { observe } from '@alumis/utils';
 
-export abstract class AlumisDropdown<TElement extends HTMLElement > extends Component<TElement> {
+export abstract class AlumisDropdownMenu extends Component<HTMLDivElement> {
 
     constructor(tagName: string, attrs: IAlumisDropdownAttributes, children: any[]) {
 
         super();
 
-        this.showAction = this.showAction.bind(this);
+        this.toggleAction = this.toggleAction.bind(this);
         
         let show: boolean | Observable<boolean> | (() => boolean);
-        let animator: IAlumisDropdownAnimator;
-        let animate: boolean;
+        let animator: IAlumisDropdownMenuAnimator;
         let placement: Placement;        
 
         if (attrs) {
@@ -25,27 +24,23 @@ export abstract class AlumisDropdown<TElement extends HTMLElement > extends Comp
             show = attrs.show;
             animator = attrs.animator;
             placement = attrs.placement;
-            animate = attrs.animate;
             
             delete attrs.show;
             delete attrs.animator;
-            delete attrs.animate;
             delete attrs.placement;
         }
 
         this.node = createNode(tagName, attrs, children);
-        this.node.remove();
+        this.node.classList.add('dropdown-menu');
 
         this.placement = placement || 'top';
         this.animator = animator;
-        this.animate = animate || false;
         this._show = show;
     }
 
     showAsObservable: Observable<boolean>;
     placement: Placement;
-    animator: IAlumisDropdownAnimator;
-    animate: boolean;
+    animator: IAlumisDropdownMenuAnimator;
     referenceElement: HTMLElement;
     isLoaded = false;
     isInitializing = false;
@@ -70,7 +65,7 @@ export abstract class AlumisDropdown<TElement extends HTMLElement > extends Comp
     
             if (show instanceof Observable) {
     
-                appendDispose(this.node, show.subscribeInvoke(this.showAction).dispose);
+                appendDispose(this.node, show.subscribeInvoke(this.toggleAction).dispose);
                 this.showAsObservable = show;
             }
     
@@ -78,7 +73,7 @@ export abstract class AlumisDropdown<TElement extends HTMLElement > extends Comp
     
                 let computedObservable = co(show);
     
-                computedObservable.subscribeInvoke(this.showAction);
+                computedObservable.subscribeInvoke(this.toggleAction);
                 appendDispose(this.node, computedObservable.dispose);
     
                 this.showAsObservable = computedObservable;
@@ -86,7 +81,7 @@ export abstract class AlumisDropdown<TElement extends HTMLElement > extends Comp
     
                 let observable = o(show);
     
-                observable.subscribeInvoke(this.showAction);
+                observable.subscribeInvoke(this.toggleAction);
                 appendDispose(this.node, observable.dispose);
     
                 this.showAsObservable = observable;
@@ -100,11 +95,9 @@ export abstract class AlumisDropdown<TElement extends HTMLElement > extends Comp
         }
     }
 
-    async showAction(show: boolean) {
+    async toggleAction(show: boolean) {
 
-        debugger;
-
-        if (!this.animate || !this.isLoaded) {
+        if (!this.animator || !this.isLoaded) {
 
             if (show) {
                 this.referenceElement.appendChild(this.node);
@@ -119,6 +112,8 @@ export abstract class AlumisDropdown<TElement extends HTMLElement > extends Comp
             if (this._cancellationToken) 
                 this._cancellationToken.cancel();
 
+            this._cancellationToken = new CancellationToken();
+
             if (show) {
 
                 if (!this.node.parentElement) {
@@ -130,9 +125,7 @@ export abstract class AlumisDropdown<TElement extends HTMLElement > extends Comp
                     observe(this.node);
                 }
 
-                this._popper.update();
-
-                this._cancellationToken = new CancellationToken();
+                this._popper.update();                
     
                 try {
                     await this.animator.showAsync(this.node, this._cancellationToken);
@@ -144,6 +137,7 @@ export abstract class AlumisDropdown<TElement extends HTMLElement > extends Comp
     
                     throw error;
                 }
+
             } else {
 
                 if (!this.node.parentElement)
@@ -160,10 +154,10 @@ export abstract class AlumisDropdown<TElement extends HTMLElement > extends Comp
                     throw error;
                 }
 
-                delete this._cancellationToken;
-
                 this.node.remove();
             }
+
+            delete this._cancellationToken;
         }
     }
 }
