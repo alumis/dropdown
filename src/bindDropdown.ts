@@ -1,7 +1,6 @@
 import { globalAttrHandlers } from '@alumis/observables-dom';
 import { AlumisDropdown } from './AlumisDropdown';
 import { IAlumisButtonAttributes } from '@alumis/button';
-import './IAlumisButtonAttributes';
 
 export function bindDropdown(node: HTMLElement, dropdown: AlumisDropdown, attrs: IAlumisButtonAttributes) {
 
