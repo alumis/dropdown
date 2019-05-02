@@ -28,6 +28,11 @@ export function bindDropdownMenu(toggleElement: HTMLElement, dropdownMenu: Alumi
         toggleElement.addEventListener('mouseenter', togglerMouseEnterEventHandler.bind(dropdownMenu));
         toggleElement.addEventListener('mouseleave', togglerMouseLeaveEventHandler.bind(dropdownMenu));
 
+        const dropdownMenuElement = dropdownMenu.node;
+
+        dropdownMenuElement.addEventListener('mouseenter', dropdownMenuMouseEnterEventHandler.bind(dropdownMenu));
+        dropdownMenuElement.addEventListener('mouseleave', dropdownMenuMouseLeaveEventHandler.bind(dropdownMenu));
+
     } else {
 
         toggleElement.addEventListener('click', togglerClickEventHandler.bind(dropdownMenu));
@@ -67,9 +72,9 @@ async function togglerMouseEnterEventHandler(event: Event) {
     const dropdown = <AlumisDropdownMenu>this;
     const toggleElement = dropdown.toggleElement;
 
-    toggleElement[IS_HOVERING_PROPERTY_NAME] = true;
+    toggleElement[IS_HOVERING] = true;
 
-    if (dropdown.isVisible) {
+    if (dropdown.emmidiateIsVisible) {
         return;
     }
 
@@ -94,7 +99,7 @@ async function togglerMouseLeaveEventHandler(event: Event) {
 
     await delayAsync(0, CancellationTokenNone.singleton);
 
-    if (dropdown[IS_HOVERING_PROPERTY_NAME] || !dropdown.isVisible)
+    if (dropdown[IS_HOVERING])
         return;
 
     try {
@@ -115,7 +120,7 @@ function dropdownMenuMouseEnterEventHandler(event: Event) {
 
     const dropdownMenu = <AlumisDropdownMenu>this;
 
-    dropdownMenu[IS_HOVERING_PROPERTY_NAME] = true;
+    dropdownMenu[IS_HOVERING] = true;
 }
 
 async function dropdownMenuMouseLeaveEventHandler(event: Event) {
@@ -123,11 +128,11 @@ async function dropdownMenuMouseLeaveEventHandler(event: Event) {
     const dropdownMenu = <AlumisDropdownMenu>this;
     const toggleElement = dropdownMenu.toggleElement;
 
-    dropdownMenu[IS_HOVERING_PROPERTY_NAME] = false;
+    dropdownMenu[IS_HOVERING] = false;
 
     await delayAsync(0, CancellationTokenNone.singleton);
 
-    if (!toggleElement[IS_HOVERING_PROPERTY_NAME]) {
+    if (!toggleElement[IS_HOVERING]) {
 
         try {
             await dropdownMenu.hideAsync();
@@ -149,7 +154,7 @@ async function togglerClickEventHandler(event: Event) {
     const dropdownMenu = <AlumisDropdownMenu>this;
     const toggleElement = dropdownMenu.toggleElement;
 
-    if (dropdownMenu.isVisible) {
+    if (dropdownMenu.emmidiateIsVisible) {
 
         try {
             await dropdownMenu.hideAsync();
@@ -181,6 +186,6 @@ async function togglerClickEventHandler(event: Event) {
     }
 }
 
-const IS_HOVERING_PROPERTY_NAME = '__isHovering';
+const IS_HOVERING = '__isHovering';
 
 globalAttrHandlers.set('dropdownmenu', bindDropdownMenu);

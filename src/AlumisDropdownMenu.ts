@@ -36,11 +36,11 @@ export abstract class AlumisDropdownMenu extends Component<HTMLDivElement> {
 
     get toggleElement() {
 
-        return this._referenceElement;
+        return this._toggleElement;
     }
     set toggleElement(value: HTMLElement) {
 
-        this._referenceElement = value;
+        this._toggleElement = value;
 
         this._popper = new Popper(value, this.node, {
 
@@ -48,14 +48,19 @@ export abstract class AlumisDropdownMenu extends Component<HTMLDivElement> {
         });
     }
 
-    get isVisible() { return this._isVisible };
+    get emmidiateIsVisible() { return this._emmidiateIsVisible };
     
-    private _referenceElement: HTMLElement;
-    private _isVisible: boolean;
+    private _toggleElement: HTMLElement;
+    private _emmidiateIsVisible: boolean;
     private _cancellationToken: CancellationToken;
     private _popper: Popper;
 
     async showAsync() {
+
+        if (this._emmidiateIsVisible) 
+            return;
+
+        this._emmidiateIsVisible = true;
 
         if (!this.animator) {
 
@@ -85,6 +90,11 @@ export abstract class AlumisDropdownMenu extends Component<HTMLDivElement> {
     }
 
     async hideAsync() {
+
+        if (!this._emmidiateIsVisible)
+            return;
+
+        this._emmidiateIsVisible = false;
 
         if (!this.animator) {
 
