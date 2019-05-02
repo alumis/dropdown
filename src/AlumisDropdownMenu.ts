@@ -1,14 +1,15 @@
 import { Component, createNode } from '@alumis/observables-dom';
 import { IAlumisDropdownMenuAttributes } from './IAlumisDropdownMenuAttributes';
 import { IAlumisDropdownMenuAnimator } from './IAlumisDropdownMenuAnimator';
-import Popper, { Placement } from 'popper.js';
+import Popper from 'popper.js';
 import { CancellationToken } from '@alumis/cancellationtoken';
 import { observe } from '@alumis/utils';
 import { DropdownMenuPlacement } from './DropdownMenuPlacement';
+import { IAlumisDropdownMenuCssClasses } from './IAlumisDropdownMenuCssClasses';
 
 export abstract class AlumisDropdownMenu extends Component<HTMLDivElement> {
 
-    constructor(attrs: IAlumisDropdownMenuAttributes, children: any[]) {
+    constructor(attrs: IAlumisDropdownMenuAttributes, children: any[], cssClasses: IAlumisDropdownMenuCssClasses) {
 
         super();
         
@@ -25,7 +26,7 @@ export abstract class AlumisDropdownMenu extends Component<HTMLDivElement> {
         }
 
         this.node = createNode('div', attrs, children);
-        this.node.classList.add('dropdown-menu');
+        this.node.classList.add(cssClasses["dropdown-menu"]);
 
         this.placement = placement || DropdownMenuPlacement.top;
         this.animator = animator;
