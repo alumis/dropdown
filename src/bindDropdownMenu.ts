@@ -97,6 +97,8 @@ async function togglerMouseLeaveEventHandler(event: Event) {
     const dropdown = <AlumisDropdownMenu>this;
     const toggleElement = dropdown.toggleElement;
 
+    toggleElement[IS_HOVERING] = false;
+
     await delayAsync(0, CancellationTokenNone.singleton);
 
     if (dropdown[IS_HOVERING])
