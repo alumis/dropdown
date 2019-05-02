@@ -4,11 +4,12 @@ import { Observable, o, co } from '@alumis/observables';
 import { IAlumisDropdownAnimator } from './IAlumisDropdownAnimator';
 import Popper, { Placement } from 'popper.js';
 import { CancellationToken, OperationCancelledError } from '@alumis/cancellationtoken';
-import { HTMLListElement } from './HTMLListElement';
+
 import { observe } from '@alumis/utils';
 
+type HTMLListElement = HTMLUListElement | HTMLOListElement;
 
-export abstract class AlumisDropdown extends Component<HTMLListElement> {
+export abstract class AlumisDropdown<TElement extends HTMLElement > extends Component<TElement> {
 
     constructor(tagName: string, attrs: IAlumisDropdownAttributes, children: any[]) {
 

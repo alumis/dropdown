@@ -2,7 +2,7 @@ import { globalAttrHandlers } from '@alumis/observables-dom';
 import { AlumisDropdown } from './AlumisDropdown';
 import { IAlumisButtonAttributes } from '@alumis/button';
 
-export function bindDropdown(node: HTMLElement, dropdown: AlumisDropdown, attrs: IAlumisButtonAttributes) {
+export function bindDropdown(node: HTMLElement, dropdown: AlumisDropdown<HTMLElement>, attrs: IAlumisButtonAttributes) {
 
     let dropdownOnHover: boolean;
     let dropdownOnClickOutside: boolean;
@@ -50,10 +50,10 @@ export function bindDropdown(node: HTMLElement, dropdown: AlumisDropdown, attrs:
     dropdown.initialize();
 }
 
-var toggleElementsOfDropdown = new Map<AlumisDropdown, HTMLElement>();
+var toggleElementsOfDropdown = new Map<AlumisDropdown<HTMLElement>, HTMLElement>();
 
 var isClickedOutsideEventHandlerAttached = false;
-var dropdownsToCloseOnClickOutsideSet = new Set<AlumisDropdown>();
+var dropdownsToCloseOnClickOutsideSet = new Set<AlumisDropdown<HTMLElement>>();
 
 function clickedOutsideEventHandler(event: Event) {
 
@@ -66,7 +66,7 @@ function clickedOutsideEventHandler(event: Event) {
     }
 }
 
-function mouseEnterEventHandler(event: Event, dropdown: AlumisDropdown) {
+function mouseEnterEventHandler(event: Event, dropdown: AlumisDropdown<HTMLElement>) {
 
     dropdown.showAsObservable.value = true;
 
@@ -74,7 +74,7 @@ function mouseEnterEventHandler(event: Event, dropdown: AlumisDropdown) {
     toggleElement.setAttribute('aria-expanded', 'true');
 }
 
-function mouseLeaveEventHandler(event: Event, dropdown: AlumisDropdown) {
+function mouseLeaveEventHandler(event: Event, dropdown: AlumisDropdown<HTMLElement>) {
 
     dropdown.showAsObservable.value = false;
 
@@ -82,7 +82,7 @@ function mouseLeaveEventHandler(event: Event, dropdown: AlumisDropdown) {
     toggleElement.setAttribute('aria-expanded', 'false');
 }
 
-function clickEventHandler(event: Event, dropdown: AlumisDropdown) {
+function clickEventHandler(event: Event, dropdown: AlumisDropdown<HTMLElement>) {
 
     dropdown.showAsObservable.value = !dropdown.showAsObservable.value;
 

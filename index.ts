@@ -7,5 +7,4 @@ export * from './src/AlumisDropdownItem';
 export * from './src/AlumisOrderedDropdown';
 export * from './src/AlumisUnorderedDropdown';
 export * from './src/bindDropdown';
-export * from './src/HTMLListElement';
 export * from './src/IAlumisDropdownAnimator';

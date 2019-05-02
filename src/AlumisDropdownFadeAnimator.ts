@@ -1,11 +1,10 @@
 import { CancellationToken } from '@alumis/cancellationtoken';
 import { transitionAsync, easeIn } from '@alumis/transitionasync';
 import { IAlumisDropdownAnimator } from "./IAlumisDropdownAnimator";
-import { HTMLListElement } from './HTMLListElement';
 
 export class AlumisDropdownEaseInFadeAnimator implements IAlumisDropdownAnimator {
     
-    async showAsync(node: HTMLListElement, cancellationToken: CancellationToken): Promise<void> {
+    async showAsync(node: HTMLElement, cancellationToken: CancellationToken): Promise<void> {
         
         let opacity = parseFloat(getComputedStyle(node).getPropertyValue('opacity'));
 
@@ -21,7 +20,7 @@ export class AlumisDropdownEaseInFadeAnimator implements IAlumisDropdownAnimator
         }, cancellationToken);
     } 
     
-    async hideAsync(node: HTMLListElement, cancellationToken: CancellationToken): Promise<void> {
+    async hideAsync(node: HTMLElement, cancellationToken: CancellationToken): Promise<void> {
         
         let opacity = parseFloat(getComputedStyle(node).getPropertyValue('opacity'));
 

@@ -1,8 +1,8 @@
-import { Component, Attributes, createNode } from '@alumis/observables-dom';
+import { Component, IAttributes, createNode } from '@alumis/observables-dom';
 
-export abstract class AlumisDropdownItem extends Component<HTMLLIElement> {
+export abstract class AlumisDropdownItem extends Component<HTMLElement> {
 
-    constructor(attrs: Attributes, children: any[]) {
+    constructor(attrs: IAttributes, children: any[]) {
 
         super();
 
