@@ -3,6 +3,7 @@ export * from './src/DropdownMenuPlacement';
 export * from './src/IAttributes';
 export * from './src/IAlumisButtonAttributes';
 export * from './src/IAlumisDropdownMenuCssClasses';
+export * from './src/IAlumisDropdownItemCssClasses';
 export * from './src/IAlumisDropdownMenuAttributes';
 export * from './src/IAlumisDropdownMenuAnimator';
 export * from './src/AlumisDropdownMenu';
