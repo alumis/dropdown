@@ -4,7 +4,6 @@ declare module '@alumis/button' {
 
     export interface IAlumisButtonAttributes {
 
-        dropdownonhover?: boolean;
         dropdowncloseonclickoutside?: boolean;
     }
 }

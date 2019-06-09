@@ -49,6 +49,8 @@ function clickedOutsideEventHandler(event: Event) {
 
 async function togglerClickEventHandler(event: Event) {
 
+    event.stopPropagation();
+
     const dropdownMenu = <AlumisDropdownMenu>this;
     const toggleElement = dropdownMenu.toggleElement;
 
